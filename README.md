@@ -1,4 +1,4 @@
-This is summary of knowledge I got after reading 'High performance Python'. Just wanted to organize and save everything in one place.
+This is summary of knowledge I got after reading ['High performance Python'](https://github.com/mynameisfiber/high_performance_python_2e). Just wanted to organize and save everything in one place.
 
 Warning! May consist not clear information and mistakes. 
 
