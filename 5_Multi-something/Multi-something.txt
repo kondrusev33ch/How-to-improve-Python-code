@@ -1,0 +1,70 @@
+# -------------------------------------------------------------------------------------------
+Concurrency
+
+    I/O wait - execution pause, when program sends or gets information.
+    While I/O wait, we are wasting precious time. Asynchronous I/O helps us utilize this
+wasted time by allowing us to perform other operations while we are in the I/O wait state.
+It is important to note that this is all still happening on a single thread and still uses
+one CPU at a time!
+    Thus concurrency is asynchronous way of execution and helpful for speedup our program,
+if our program has a lot of I/O wait.
+    We will use asyncio module for this purpose.
+
+    Another asynchronous libraries:
+
+    Gevent - one of the simplest. It follows the paradigm of having asynchronous functions
+return futures, which means most of the logic in your code can stay the same. In addition,
+gevent monkey patches the standard I/O functions to be asynchronous, so most of the time
+you can simply use the standard I/O packages and benefit from asynchronous behavior.
+    http://www.gevent.org
+
+    tornado - originally developed by Facebook primarily for HTTP clients and servers. This
+framework has been around since py 3.5, when async/await was introduced, and originally
+used a system of callbacks to organize asynchronous calls.
+    When using tornado, make sure to have pycurl installed. It is an optional backend for
+tornado but performs better, especially with DNS requests, than the default backend.
+    https://www.tornadoweb.org/en/stable/
+
+    aiohttp - In response to popularity of using async functionality to deal with heavy
+I/O systems, py 3.4+ introduced a revamping of the old asyncio standard library module.
+At the time, however, this module was quite low level, providing all of the low-level
+mechanisms for third-party libraries to create easy-to-use synchronous libraries.
+    https://docs.aiohttp.org/en/stable/
+
+# -------------------------------------------------------------------------------------------
+Multithreading and Multiprocessing
+
+    Multithreading module offers concurrent execution of threads within the program, using
+multiple threads. Useful for I/O bound problems - external events (user input, web scraping).
+    thread - a flow of execution. Like a separate order of instructions.
+    However, each thread takes a turn running to achieve concurrency, GIL(global interpreter
+lock), allows only one thread to hold the control of the Python interpreter at any one time.
+
+    Multiprocessing module offers parallel execution of processes within the program, using
+multiple cores. Useful for CPU-bound problems - internal events (CPU intensive tasks).
+
+    OpenMP or multiprocessing module?
+    multiprocessing module works at a higher level, sharing Python data structures, while
+OpenMP  works with C primitive objects once you've compiled to C. Using OpenMP makes sense
+only if you're compiling code; if you're not compiling (e.g., if you are using efficient
+numpy code and you want to run on many cores), then sticking with multiprocessing module is
+probably the right approach.
+
+    Replacing multiprocessing module with Joblib
+    Joblib is an improvement on multiprocessing that enables lightweight pipelining with a
+focus on easy parallel computing and transparent disk-based caching of results. It focuses
+on NumPy arrays for scientific computing. It may offer a quick win for you if you are:
+    • Using pure Python, with or without NumPy, to process a loop that could be
+      embarrassingly parallel
+    • Calling expensive functions that have no side effects, where the output could be
+      cached to disk between sessions
+    • Able to share NumPy data between processes but don't know how
+
+    Here are some strategies for efficiently using multiprocessing for embarrassingly
+parallel problems:
+    • Split your jobs into independent units of work
+    • If your workers take varying amounts of time, consider randomizing the sequence of
+      work
+    • Sorting your work queue so that the slowest jobs go first may be an equally useful
+      strategy
+

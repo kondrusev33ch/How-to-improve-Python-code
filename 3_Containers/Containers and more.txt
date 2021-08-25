@@ -1,0 +1,81 @@
+# ---------------------------------------------------------------------------------
+Containers
+
+    I assume you know what a list, a tuple, a dict and a set are. So I will focus
+only on where and when you should use them.
+
+    List - used for dynamic data (adding or deleting elements), not good for large
+data amounts
+
+    Tuple - used for static data (constant), faster and requires less memory than
+list
+
+    Dict - used to store and fast data access through a unique key, consumes
+more memory than list or tuple
+
+    Set - used to store and fast access to a unique data, consumes more memory
+than list or tuple
+
+# ---------------------------------------------------------------------------------
+Generators
+
+    Generators are iterators, a kind of iterable you can only iterate over once.
+Generators do not store all the values in memory, they generate the values on the
+fly. It is handy when you know your function will return a huge set of values that
+you will only need to read once. This helps you reduce RAM usage.
+    range() returns a generator of values as opposed to the actual list of numbers
+within the specified range. Similarly map, zip, filter, reversed, and enumerate all
+perform the calculation as needed and don't store the full result.
+    Operation zip(range(100_000), range(100_000)) will always have only two numbers
+in memory in order to return its corresponding values, instead  of precalculating
+the result for the entire range beforehand.
+
+# ---------------------------------------------------------------------------------
+Vectorization
+
+    Python lists store pointers, instead of data we care about, lists store
+locations where the data can be found. For most uses, this is good because it
+allows us to store whatever type of data we like inside a list. However, when it
+comes to vector and matrix operations, this is a source of a lot of performance
+degradation.
+    The degradation occurs because every time we want to fetch an element from
+the grid matrix, we must do multiple lookups. However, if the data we wanted was
+located in one contiguous block in memory, we could move all of the data in one
+operation instead of needing two operations for each element.
+    Vectorization is used to speed up the Python code. NumPy is the tool for this.
+
+# ---------------------------------------------------------------------------------
+NumPy
+
+    NumPy has all of the features we need - it stores data in contiguous chunks of
+memory and supports vectorized operations on its data. As a result, any arithmetic
+we do on numpy arrays happens in chunks without us having to explicitly loop over
+each element.
+
+# ---------------------------------------------------------------------------------
+NumExpr
+
+    One downfall of numpy's optimization of vector operations is that it occurs on
+only one operation at a time:
+    A * B + C
+    1. temp vector = A * B
+    2. temp vector + C
+
+    However, many modules can help with this. numexpr is a module that can take an
+entire vector expression and compile it into very efficient code that is optimized
+to minimize cache misses and temporary space used. In addition, the expressions can
+use multiple CPU cores and take advantage of the specialized instructions your CPU
+may support in order to get even greater speedups.
+
+# ---------------------------------------------------------------------------------
+SciPy
+
+    This library built on NumPy and used for scientific computing and technical
+computing. So if you want to be a bad ass scientist, here you go:
+https://docs.scipy.org/doc/scipy/reference/tutorial/index.html#user-guide
+
+# ---------------------------------------------------------------------------------
+Pandas
+
+    One word - tables
+    https://pandas.pydata.org/docs/user_guide/10min.html#object-creation

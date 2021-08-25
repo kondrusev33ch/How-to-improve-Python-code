@@ -1,0 +1,54 @@
+    Python is dynamically typed (a variable can refer to an object of any type, and
+any line of code can change the type of the object that is referred to), this makes
+code run more slowly.
+
+# ----------------------------------------------------------------------------------
+Cython
+
+    With Cython, we can convert Python code to C code and get the speed we want.
+    How to use: https://cython.readthedocs.io/en/latest/
+    Tut: https://pythonprogramming.net/introduction-and-basics-cython-tutorial/
+
+Cython and NumPy
+
+    cimport numpy as np - you must use this, without it Cython version will be much
+slower than pure Python.
+    You can use OpenMP with Cython.
+
+# ----------------------------------------------------------------------------------
+Numba
+
+    JIT compiler that specializes in numpy code, which it compiles via the LLVM
+compiler at runtime. The beauty is that you provide a decorator telling it which
+functions to focus on and then you let the Numba take over.
+    You can use OpenMP with Numba.
+    https://numba.readthedocs.io/en/stable/user/5minguide.html
+
+# ----------------------------------------------------------------------------------
+PyPy
+
+    PyPy is an alternative implementation of the Python language that includes a
+tracing jit compiler.
+    https://www.pypy.org
+
+# ----------------------------------------------------------------------------------
+What should I use?
+
+    Numba may offer quick wins for little effort, but it too has limitations that
+might stop it working well on your code. For numpy code, Numba is a great first
+choice.
+    Cython probably offers the best results for the widest set of problems, but it
+does require more effort and has an additional "support tax" due to mixing Python
+with C annotations.
+    PyPy is a strong option if you're not using numpy or other hard-to-port C
+extensions. So for pure Python code, PyPy is an obvious first choice. And one more
+benefit - PyPy has full support for multiprocessing library, so if you are using
+only CPython code for parallel processing, PyPy might be a quick win for you.
+
+    There are more compilers we can use:
+    Pythran   - https://pythran.readthedocs.io/en/latest/
+    Transonic - https://transonic.readthedocs.io/en/latest/
+    ShedSkin  - https://github.com/shedskin/shedskin
+    PyCUDA    - https://documen.tician.de/pycuda/
+    PyOpenCL  - https://documen.tician.de/pyopencl/
+    Nuitka    - https://nuitka.net/pages/overview.html

@@ -1,0 +1,25 @@
+    GPUs is slower than CPUs obviously, but they have one advantage, amount of cores.
+CPUs generally have on the order of 12 cores, while modern_day GPUs have thousands. So
+doing parallelize tasks becomes much faster.
+    The two front-runners in terms of easy-to-use GPU mathematics libraries are
+TenserFlow and PyTorch.
+
+# -------------------------------------------------------------------------------------
+PyTorch
+
+    https://pytorch.org
+    Pytorch is a static computation graph tensor library that is particularly user-
+friendly and has a very intuitive API for anyone familiar with numpy. By static
+computational graph, mean that performing operations on PyTorch objects creates a
+dynamic definition of a program that gets compiled to GPU code in the background when
+it is executed. Since it is dynamic, changes to the Python code automatically get
+reflected in changes in the GPU code without an explicit compilation step needed. This
+hugely aids debugging and interactivity, as compared to static graph libraries like
+TenserFlow.
+
+# -------------------------------------------------------------------------------------
+    If your tasks requires mainly linear algebra and matrix manipulations then GPUs are
+a fantastic tool. This is particularly true if the calculation can happen on the GPU
+uninterrupted for a period of time before being copied back into system memory.
+    If task require a lot of branching it better to use CPU.
+    Large amount of data is not good for GPUs.

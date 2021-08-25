@@ -1,0 +1,35 @@
+# ------------------------------------------------------------------------------------------
+ctypes
+
+    ctypes is a foreign function library for Python, It provides C compatible data types,
+and allows calling functions in DLLs or shared libraries. It can be used to wrap these
+libraries in pure Python. Will also work with Fortran libraries.
+    https://docs.python.org/3/library/ctypes.html
+
+# ------------------------------------------------------------------------------------------
+cffi
+
+    Realizing that ctypes can be quite cumbersome to use at times, cffi attempts to simplify
+many of the standard operations that programmers use. It does this having an internal C
+parser that can understand function and structure definitions.
+    As a result, we can simply write the C code that defines the structure of the library we
+wish to use, and then cffi will do all the heavy work for us: it is imports the module and
+makes sure we specify the correct types to the resulting functions. In fact, this work can
+be almost trivial if the source for the library is available, since the header files will
+include all the relevant definitions we need.
+    https://cffi.readthedocs.io/en/latest/index.html
+
+# ------------------------------------------------------------------------------------------
+CPython Module
+
+    Finally, we can always go right down to the CPython API level and write a CPython
+module. This requires us to write code in the same way that CPython is developed ant take
+care of all of the interactions between our code and the implementation of CPython.
+    This has the advantage that it is incredibly portable, depending on the Python version.
+We don't require any external modules or libraries, just a C compiler and Python! However,
+this doesn't necessarily scale well to new versions of Python. For example, CPython modules
+written for py 2.7 won't work with py 3, and vice versa.
+    All in all, this method should be left as a last resort. While it is quite informative
+to write a CPython module, the resulting code is not as reusable or maintainable as other
+potential methods.
+    Without example.

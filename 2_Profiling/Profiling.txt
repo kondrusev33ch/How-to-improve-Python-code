@@ -1,0 +1,16 @@
+    A profile is a set of statistics that describes how often and for how long various parts
+of the program executed. This will help you to find a place of problem part in the code, so
+you'll know what to improve or change.
+    CPU: cProfile and LineProfiler
+    RAM: MemoryProfiler
+    CPython Bytecode: dis
+
+    Strategies to Profile Your Code Successfully
+    • Disable Turbo Boost in the BIOS.
+    • Disable the operating system’s ability to override the SpeedStep (you will find
+      this in your BIOS if you’re allowed to control it).
+    • Use only AC power (never battery power).
+    • Disable background tools like backups and Dropbox while running experiments.
+    • Run the experiments many times to obtain a stable measurement.
+    • Possibly drop to run level 1 (Unix) so that no other tasks are running.
+    • Reboot and rerun the experiments to double-confirm the results.

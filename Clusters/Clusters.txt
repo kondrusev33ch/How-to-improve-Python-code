@@ -1,0 +1,43 @@
+    Clusters and Job Queues
+
+    A cluster is commonly recognized to be a collection of computers working to solve
+common task, as a large single system.
+
+    Before you move to a cluster solution, do make sure that you have done the following:
+    • Profiled your system
+    • Exploited Numba, Cython ...
+    • Exploited multiprocessing
+    • Exploited techniques for using less RAM
+
+    Keeping your system to one machine will make everything easier. Move to a cluster only
+if you really need a lot of CPUs or the ability to process data from disks in parallel, or
+you have production needs like high resiliency and rapid speed of response.
+
+    • Why are clusters useful?
+    Because of easily scale computing requirements - if you need process more data or get
+an answer faster, you just add more machines. Clusters are also used to create systems that
+scale dynamically. Also you can separate clusters geographically but still centrally
+controlled them.
+
+    • What are the costs of clustering?
+    A lot of pain in the ass, because you need to have: high system administration level;
+high quality engineers to build robust system considering all the nuances; system
+engineers who can deal with technical issues;
+    Slack behavior can be a cause of expensive mistakes, and complex and hard-to-anticipate
+behavior can cause unexpected and expensive outcomes.
+
+    • Two clustering solutions:
+    IPython clusters are easy to use on one machine with multiple cores. It is natural to
+also use it for parallel job control. A huge advantage with IPython Parallel is that you
+can use remote clusters just as easy as local clusters.
+
+    NSQ is a production-ready queuing system. It has persistence (so if machine die, jobs
+can be picked up again by another machine) and strong mechanisms for scalability. With
+this great power comes a slightly greater need for system administration and
+engineering skills.
+
+    • Queues
+    A queue is a type of buffer for messages. Whenever you want to send a message to another
+part of your processing pipeline, you send it to the queue, and it will wait there until a
+worker is available. A queue is most useful in distributed processing when an imbalance
+exists between production and consumption.
