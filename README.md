@@ -13,6 +13,6 @@ Get understanding of basics of advanced Python techniques. How to use them and i
 * How to increase efficiency compiling code to C
 * What is multithreading
 * What is multiprocessing
-* What is clusters
+* What are clusters
 * How to increase efficiency using a GPU
 
